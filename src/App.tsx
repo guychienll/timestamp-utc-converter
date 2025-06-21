@@ -82,7 +82,7 @@ const IANA_OPTIONS = Intl.supportedValuesOf("timeZone").reduce((acc, key) => {
   const now = DateTime.now();
   const zoneTime = now.setZone(key);
   const offsetMinutes = zoneTime.offset;
-  const offsetHours = offsetMinutes / 60;
+  const offsetHours = Math.floor(offsetMinutes / 60);
   const offsetSign = offsetHours >= 0 ? "+" : "";
   const offsetString = `${offsetSign}${offsetHours}:${Math.abs(
     offsetMinutes % 60
@@ -104,7 +104,7 @@ const IANA_OPTIONS_BY_UTC = Intl.supportedValuesOf("timeZone").reduce(
     const now = DateTime.now();
     const zoneTime = now.setZone(key);
     const offsetMinutes = zoneTime.offset;
-    const offsetHours = offsetMinutes / 60;
+    const offsetHours = Math.floor(offsetMinutes / 60);
     const offsetSign = offsetHours >= 0 ? "+" : "";
     const offsetString = `${offsetSign}${offsetHours}:${Math.abs(
       offsetMinutes % 60
