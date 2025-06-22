@@ -228,6 +228,9 @@ function App() {
                 onChange={(e) => {
                   const { value } = e.target;
                   field.onChange(Number(value));
+                  if (result) {
+                    setResult(null);
+                  }
                 }}
               />
             </Field>
